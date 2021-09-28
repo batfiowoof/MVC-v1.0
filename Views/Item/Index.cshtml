@@ -9,6 +9,9 @@
                     Borrowed Items List
                 </h2>
             </div>
+            <div class="col-6 text-right">
+                <a class="btn btn-primary w-75" asp-controller="Item" asp-action="Create">Create new item</a>
+            </div>
         </div>
     </div>
 <br/>
@@ -29,6 +32,10 @@
                             <td width="30%">@item.ItemName</td>
                             <td width="30%">@item.Borrower</td>
                             <td width="30%">@item.Lender</td>
+                            <td width="25%">
+                                <a class="btn btn-success m-1" asp-controller="Item" asp-action="Update" asp-route-id=@item.ID>Update</a>
+                                <a class="btn btn-danger m-1" asp-controller="Item" asp-action="Delete" asp-route-id=@item.ID>Delete</a>
+                            </td>
                         </tr>
                             
                         }
