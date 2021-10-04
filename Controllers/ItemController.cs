@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MVC.Data;
 using MVC.Models;
+using MVC.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace MVC.Controllers
 
         public IActionResult Create()
         {
+            ItemVM itemVM = new ItemVM();
             return View();
         }
 
@@ -32,9 +34,14 @@ namespace MVC.Controllers
 
         public IActionResult Create(Item item)
         {
-            _db.Items.Add(item);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _db.Items.Add(item);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(item);
         }
 
         public IActionResult Update(int? id)
