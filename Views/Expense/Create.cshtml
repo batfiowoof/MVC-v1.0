@@ -1,0 +1,23 @@
+﻿@model MVC.Models.Expense
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>Create</h1>
+<form method="post" asp-action="Create">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group row">
+                <label class="col-3 m-1 form-control" asp-for="ExpenseName"></label>
+                <label class="col-3 m-1 form-control" asp-for="Amount"></label>
+            </div>
+            <div class="form-group row">
+                <input class="col-3 form-control m-1" asp-for="ExpenseName" />
+                <input class="col-3 form-control m-1" asp-for="Amount" />
+            </div>
+            <div class="col-3 form-control m-1"></div>
+            <button type="submit" class="col-3 btn btn-success m-1">Save</button>
+            <button asp-action="Index" class="col-3 btn btn-danger m-1">Back</button>
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>
+    </div>
+</form>
